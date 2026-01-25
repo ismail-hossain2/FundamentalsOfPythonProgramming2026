@@ -67,7 +67,7 @@ def main():
     total_price = number_of_hours * hourly_price
     print("Total price: {:.2f}".format(total_price).replace('.', ',') + " €")
 
-    paid = bool(reservation.split('|')[6])
+    paid = reservation.split('|')[6] == "True"
     print(f"Paid: {'Yes' if paid else 'No'}")
 
     resource = reservation.split('|')[7]

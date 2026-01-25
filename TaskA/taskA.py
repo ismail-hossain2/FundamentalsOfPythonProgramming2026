@@ -31,7 +31,7 @@ Email: anna.virtanen@example.com
 
 def main():
     # Define the file name directly in the code
-    reservations = "reservations.txt"
+    reservations = "TaskA/reservations.txt"
 
     # Open the file and read its contents
     with open(reservations, "r", encoding="utf-8") as f:

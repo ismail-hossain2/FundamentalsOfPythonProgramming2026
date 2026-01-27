@@ -1,0 +1,2 @@
+1|Anna Virtanen|2025-10-31|10:00|2|Yes|Meeting Room A|0401234567|anna@example.com
+2|Sara Niemi|2025-11-02|09:30|3|No|Meeting Room B|0403334444|sara@example.com

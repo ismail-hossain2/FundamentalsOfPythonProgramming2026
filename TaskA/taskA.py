@@ -30,12 +30,12 @@ Email: anna.virtanen@example.com
 #  modified by Mazharul Islam according to instructions
 
 def main():
-    # Define the file name directly in the code
-    reservations = "TaskA/reservations.txt"
-
     # Open the file and read its contents
-    with open(reservations, "r", encoding="utf-8") as f:
+    with open("reservations.txt", "r", encoding="utf-8") as f:
         reservation = f.read().strip()
+
+    # Print the reservation to the console
+    print(reservation)
 
     # Print the reservation to the console
     #print(reservation)

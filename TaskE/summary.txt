@@ -1,0 +1,36 @@
+Week 41 electricity consumption and production (kWh)
+päivä        pvm         kulutus (kWh)  tuotanto (kWh)
+maanantai   06.10.2025     16,69            1,33
+tiistai     07.10.2025     16,72            3,52
+keskiviikko 08.10.2025     23,17            0,31
+torstai     09.10.2025     15,69            8,96
+perjantai   10.10.2025     14,32           14,98
+lauantai    11.10.2025     17,00            3,79
+sunnuntai   12.10.2025     14,09            2,17
+Yhteensä                 117,67           35,07
+
+Week 42 electricity consumption and production (kWh)
+päivä        pvm         kulutus (kWh)  tuotanto (kWh)
+maanantai   13.10.2025     15,81            0,92
+tiistai     14.10.2025     15,87            1,54
+keskiviikko 15.10.2025     15,49            2,38
+torstai     16.10.2025     13,27            9,68
+perjantai   17.10.2025     22,69           11,69
+lauantai    18.10.2025     31,61            4,99
+sunnuntai   19.10.2025     24,38            5,38
+Yhteensä                 139,12           36,59
+
+Week 43 electricity consumption and production (kWh)
+päivä        pvm         kulutus (kWh)  tuotanto (kWh)
+maanantai   20.10.2025     30,19            1,28
+tiistai     21.10.2025     21,28            7,50
+keskiviikko 22.10.2025     30,22            0,17
+torstai     23.10.2025     32,42            0,04
+perjantai   24.10.2025     27,52            0,01
+lauantai    25.10.2025     28,07            0,00
+sunnuntai   26.10.2025     35,22            0,01
+Yhteensä                 204,93            9,02
+
+All three weeks total (kWh)
+Total consumption:     461,71
+Total production:      80,67

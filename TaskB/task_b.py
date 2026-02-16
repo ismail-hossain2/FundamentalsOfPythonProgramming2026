@@ -1,107 +1,103 @@
-from __future__ import annotations
-
-from datetime import datetime
 from pathlib import Path
+from datetime import datetime
 
 
 def parse_reservation(line: str) -> dict:
-    parts = [p.strip() for p in line.strip().split("|")]
-
-    reservation_number = int(parts[0])
-    booker = parts[1]
-    reservation_date = datetime.strptime(parts[2], "%Y-%m-%d").date()
-    start_time = datetime.strptime(parts[3], "%H:%M").time()
-    hours = int(parts[4])
-    hourly_price = float(parts[5])
-    paid = parts[6] == "True"
-    resource = parts[7]
-    phone = parts[8]
-    email = parts[9]
-
+    parts = line.strip().split("|")
     return {
-        "reservation_number": reservation_number,
-        "booker": booker,
-        "date": reservation_date,
-        "start_time": start_time,
-        "hours": hours,
-        "hourly_price": hourly_price,
-        "paid": paid,
-        "resource": resource,
-        "phone": phone,
-        "email": email,
+        "reservation_number": int(parts[0]),
+        "booker": parts[1],
+        "date": datetime.strptime(parts[2], "%Y-%m-%d").date(),     # convert
+        "start_time": datetime.strptime(parts[3], "%H:%M").time(),  # convert
+        "hours": int(parts[4]),
+        "hourly_rate": float(parts[5].replace(",", ".")),           # safe if comma exists
+        "paid": parts[6].strip().lower() in ("yes", "true", "1"),
+        "venue": parts[7],
+        "phone": parts[8],
+        "email": parts[9],
     }
 
 
-def print_reservation_number(r: dict):
+def fmt_date(d) -> str:
+    return d.strftime("%d.%m.%Y")
+
+
+def fmt_time(t) -> str:
+    return t.strftime("%H.%M")
+
+
+def fmt_money(x: float) -> str:
+    return f"{x:.2f}".replace(".", ",") + " €"
+
+
+def print_reservation_number(r: dict) -> None:
     print(f"Reservation number: {r['reservation_number']}")
 
 
-def print_booker(r: dict):
+def print_booker(r: dict) -> None:
     print(f"Booker: {r['booker']}")
 
 
-def print_date(r: dict):
-    print(f"Date: {r['date']}")
+def print_date(r: dict) -> None:
+    print(f"Date: {fmt_date(r['date'])}")
 
 
-def print_start_time(r: dict):
-    print(f"Start time: {r['start_time'].strftime('%H:%M')}")
+def print_start_time(r: dict) -> None:
+    print(f"Start time: {fmt_time(r['start_time'])}")
 
 
-def print_hours(r: dict):
+def print_hours(r: dict) -> None:
     print(f"Number of hours: {r['hours']}")
 
 
-def print_hourly_price(r: dict):
-    print(f"Hourly price: {r['hourly_price']} €")
+def print_hourly_rate(r: dict) -> None:
+    print(f"Hourly rate: {fmt_money(r['hourly_rate'])}")
 
 
-def print_total_price(r: dict):
-    total = r["hours"] * r["hourly_price"]
-    print(f"Total price: {total} €")
+def print_total_price(r: dict) -> None:
+    total = r["hours"] * r["hourly_rate"]
+    print(f"Total price: {fmt_money(total)}")
 
 
-def print_paid(r: dict):
-    print(f"Paid: {r['paid']}")
+def print_paid(r: dict) -> None:
+    print(f"Paid: {'Yes' if r['paid'] else 'No'}")
 
 
-def print_location(r: dict):
-    print(f"Location: {r['resource']}")
+def print_venue(r: dict) -> None:
+    print(f"Venue: {r['venue']}")
 
 
-def print_phone(r: dict):
+def print_phone(r: dict) -> None:
     print(f"Phone: {r['phone']}")
 
 
-def print_email(r: dict):
+def print_email(r: dict) -> None:
     print(f"Email: {r['email']}")
 
 
-def print_reservation(r: dict):
+def print_reservation(r: dict) -> None:
     print_reservation_number(r)
     print_booker(r)
     print_date(r)
     print_start_time(r)
     print_hours(r)
-    print_hourly_price(r)
+    print_hourly_rate(r)
     print_total_price(r)
     print_paid(r)
-    print_location(r)
+    print_venue(r)
     print_phone(r)
     print_email(r)
+    print()  # blank line between reservations
 
 
-def main():
+def main() -> None:
     path = Path(__file__).with_name("reservations.txt")
-
     with path.open("r", encoding="utf-8") as f:
         for line in f:
             if line.strip():
-                reservation = parse_reservation(line)
-                print_reservation(reservation)
-                print()
+                r = parse_reservation(line)
+                print_reservation(r)
 
 
 if __name__ == "__main__":
     main()
-

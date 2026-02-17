@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Ismail hossain
+# Copyright (c) 2026 Ismail hossain
 #
 # This code is licensed under the MIT License.
 # You are free to use, modify, and distribute this code,

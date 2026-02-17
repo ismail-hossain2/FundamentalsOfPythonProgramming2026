@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Ismail Hossain
+# Copyright (c) 2026 Ismail Hossain
 # License: MIT
 
 from __future__ import annotations
